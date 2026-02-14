@@ -1,0 +1,1 @@
+<script src="{ asset('Frontend/assets/js') }}/bootstrap.bundle.min.js"></script>
