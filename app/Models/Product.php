@@ -9,4 +9,8 @@ class Product extends Model
 {
     use HasFactory;
     protected $table = 'products';
+
+    public function imagesFunction(){
+        return $this->hasMany(ProductImage::class);
+    }
 }
