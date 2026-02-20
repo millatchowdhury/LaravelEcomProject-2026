@@ -18,12 +18,12 @@
                             <div class="col-xl-3">
                                 <div class="card" style="margin-bottom: 15px;">
                                     {{-- @foreach ($product->imagesFunction as $image)
-                                    <img src="{{ asset('Frontend/assets/images/'.$image->image) }}" class="card-img-top" alt="">
+                                    <img src="{{ asset('images/'.$image->image) }}" class="card-img-top" alt="">
                                     @endforeach --}}
                                     @php $i = 1;  @endphp
                                     @foreach ($product->imagesFunction as $image)
                                         @if($i>0)
-                                            <img src="{{ asset('Frontend/assets/images/'.$image->image) }}" class="card-img-top" alt="">
+                                            <img src="{{ asset('images/'.$image->image) }}" class="card-img-top" alt="">
                                         @endif
                                         @php $i--; @endphp
                                     @endforeach
