@@ -9,7 +9,14 @@
                     @include('Frontend.partials.sidebar')
                 </div>
                 <div class="col-xl-10">
-                    @include('Frontend.pages.product.partials.all_products')
+                    <div class="widget">
+                        <h3>Searched Products For - 
+                            <span class="badge text-bg-primary">
+                                {{ $search }}
+                            </span>
+                        </h3>
+                        @include('Frontend.pages.product.partials.all_products')
+                    </div>
                 </div>
             </div>
         </div>

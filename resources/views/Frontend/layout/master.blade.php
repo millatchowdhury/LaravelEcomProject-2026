@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>
+      @yield('title', 'Laravel Ecommerce Project')
+    </title>
     
     @include('Frontend.partials.css')
   </head>

@@ -10,3 +10,18 @@
 .footer p{
     margin: 0;
 }
+
+.product-item{
+    background: #dcf4fc;
+    padding: 20px;
+}
+
+.category-child{
+    padding-left: 15px;
+    border-left: 1px solid gray;
+    background: #fff;
+}
+.category-child a.list-group-item{
+    border-left: 0px !important;
+
+}

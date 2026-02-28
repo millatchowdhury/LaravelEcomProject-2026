@@ -9,16 +9,12 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function index(){
-        return view('Frontend.pages.home.index');
+        $products = Product::orderBy('id', 'desc')->paginate(9);
+        return view('Frontend.pages.home.index', compact('products'));
     }
 
     public function contact(){
         return view('Frontend.pages.contact.contact');
-    }
-    
-    public function products(){
-        $products = Product::orderBy('id', 'desc')->get();
-        return view('Frontend.pages.product.index', compact('products'));
     }
 
 }

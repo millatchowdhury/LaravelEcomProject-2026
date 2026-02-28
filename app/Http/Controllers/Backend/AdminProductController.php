@@ -50,7 +50,7 @@ class AdminProductController extends Controller
         //     // image upload in laravel images folder 
         //     $image = $request->file('product_image');
         //     $img = time().'.'.$image->getClientOriginalExtension();
-        //     $location = public_path('images/'.$img);
+        //     $location = public_path('images/products/'.$img);
         //     $manager = new ImageManager(new Driver());
         //     $manager->read($image)->save($location);
 
@@ -70,7 +70,7 @@ class AdminProductController extends Controller
                 // image upload in laravel images folder 
                 // $img = time().'.'.$image->getClientOriginalExtension(); multi image ar somoy same name hoye jay
                 $img = uniqid().'_'.$image->getClientOriginalName();
-                $location = public_path('images/'.$img);
+                $location = public_path('images/products/'.$img);
                 $manager = new ImageManager(new Driver());
                 $manager->read($image)->save($location);
 
@@ -119,7 +119,7 @@ class AdminProductController extends Controller
         //     // image upload in laravel images folder 
         //     $image = $request->file('product_image');
         //     $img = time().'.'.$image->getClientOriginalExtension();
-        //     $location = public_path('images/'.$img);
+        //     $location = public_path('images/products/'.$img);
         //     $manager = new ImageManager(new Driver());
         //     $manager->read($image)->save($location);
 
@@ -139,7 +139,7 @@ class AdminProductController extends Controller
         //         // image upload in laravel images folder 
         //         // $img = time().'.'.$image->getClientOriginalExtension(); multi image ar somoy same name hoye jay
         //         $img = uniqid().'_'.$image->getClientOriginalName();
-        //         $location = public_path('images/'.$img);
+        //         $location = public_path('images/products/'.$img);
         //         $manager = new ImageManager(new Driver());
         //         $manager->read($image)->save($location);
 
