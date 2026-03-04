@@ -26,6 +26,34 @@
                             <label for="quantity" class="form-label">Quantity</label>
                             <input type="number" class="form-control" value="{{ $products->quantity }}" id="quantity" name="quantity">
                         </div>
+
+                        {{-- category for product  --}}
+                        <div class="form-group">
+                            <label for="Category" class="form-label">Select Category</label>
+                            <select class="form-control" name="category_id">
+                                <option value="">Please select a Category for the product</option>
+                                @foreach (App\Models\Category::orderBy('name', 'asc')->where('parent_id', NULL)->get() as $parent)
+                                    <option value="{{ $parent->id }}" {{ $parent->id == $products->category->id ? 'selected' : ''}} >{{ $parent->name }}</option>
+
+                                    @foreach (App\Models\Category::orderBy('name', 'asc')->where('parent_id', $parent->id)->get() as $child)
+                                        <option value="{{ $child->id }}" {{ $child->id == $products->category->id ? 'selected' : ''}}> ---> {{ $child->name }}</option>
+                                        
+                                    @endforeach
+                                @endforeach
+                            </select>
+                        </div>
+                        
+                        {{-- Brand for product  --}}
+                        <div class="form-group">
+                            <label for="Brand" class="form-label">Select Brand</label>
+                            <select class="form-control" name="brand_id">
+                                <option value="">Please select a Brand for the product</option>
+                                @foreach (App\Models\Brand::orderBy('name', 'asc')->get() as $brd)
+                                    <option value="{{ $brd->id }}" {{ $brd->id == $products->brand->id ? 'selected' : '' }} >{{ $brd->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         {{-- For Single Image  --}}
                         {{-- <div class="form-group">
                             <label for="product_image" class="form-label">Product Image</label>

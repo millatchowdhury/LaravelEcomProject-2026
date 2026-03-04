@@ -25,3 +25,15 @@
     border-left: 0px !important;
 
 }
+
+.list-group-item.active{
+    z-index: 2;
+    color: #fff;
+    background-color: #02aadd;
+    border-color: #02aadd;
+    border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    -ms-border-radius: 0px !important;
+    -o-border-radius: 0px !important;
+}

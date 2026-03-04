@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
 {{-- 
  <div class="container">
       <div class="row">
@@ -35,10 +36,10 @@
     </div> 
 --}}
 
-
+        {{-- product carousel start  --}}
 <div class="container margin-top-20">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-xl-4">
             <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
                 @php
@@ -64,11 +65,21 @@
                 <span class="visually-hidden">Next</span>
             </button>
             </div>
+
+
+            <div class="mt-3">
+                <p>Category <span class="badge text-bg-info">{{ $product->category->name }}</span></p>
+                <p>Brand <span class="badge text-bg-info">{{ $product->brand->name }}</span></p>
+            </div>
         </div>
 
-        <div class="col-md-8">
+        {{-- product carousel end  --}}
+
+       
+
+        <div class="col-xl-8">
             <div class="widget">
-                <h3>{{ $product->title }}</h3>
+                <h3>{{ $product->title }} in <mark>{{ $product->category->name }} Category</mark></h3>
                 <h3>{{ $product->price }} Taka
                     <span class="badge text-bg-primary">
                         {{ $product->quantity < 1 ? 'No Item is Available' : $product->quantity.' Item is stock' }}
