@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Backend\AdminBrandController;
 use App\Http\Controllers\Backend\AdminCategoryController;
 use App\Http\Controllers\Backend\AdminPagesController;
@@ -7,7 +10,7 @@ use App\Http\Controllers\Backend\AdminProductController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\PagesController;
 use App\Http\Controllers\Frontend\ProductController;
-use Illuminate\Support\Facades\Route;
+
 
 
 // Frontend 
@@ -26,11 +29,6 @@ Route::group(['prefix' => 'products'], function(){
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
     Route::get('/category/{id}', [CategoryController::class, 'show'])->name('categories.show');
 });
-
-
-
-
-
 
 
 
@@ -74,3 +72,22 @@ Route::group(['prefix' => 'admin'], function(){
 
 });
 
+
+
+// User Authentication 
+
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
