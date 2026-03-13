@@ -42,6 +42,29 @@
               
             </div>
           </li>
+          {{-- Division Manage Dropdown --}}
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#division-pages" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="{{ asset('Backend/assets') }}/images/menu_icons/08.png" alt="menu icon"> <span class="menu-title">Manage Division</span><i class="menu-arrow"></i></a>
+            <div class="collapse" id="division-pages">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('admin.division.create') }}">Create Division</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('admin.divisions') }}">Manage Division</a></li>
+              </ul>
+              
+            </div>
+          </li>
+
+          {{-- District Manage Dropdown --}}
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#district-pages" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="{{ asset('Backend/assets') }}/images/menu_icons/08.png" alt="menu icon"> <span class="menu-title">Manage District</span><i class="menu-arrow"></i></a>
+            <div class="collapse" id="district-pages">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('admin.district.create') }}">Create District</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('admin.districts') }}">Manage District</a></li>
+              </ul>
+              
+            </div>
+          </li>
           
           <li class="nav-item purchase-button"><a class="nav-link" href="https://www.bootstrapdash.com/product/star-admin-pro/" target="_blank">Get full version</a></li>
         </ul>

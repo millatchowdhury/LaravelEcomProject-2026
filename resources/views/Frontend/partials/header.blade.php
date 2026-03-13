@@ -29,7 +29,7 @@
                                             @auth
                                             {{-- ---------------- --}}
                                             
-                {{ Auth::user()->name }}  |  
+                {{ Auth::user()->first_name }}  |  
                 {{ Auth::user()->email }}
                 <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
