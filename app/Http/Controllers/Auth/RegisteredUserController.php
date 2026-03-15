@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Notifications\VerifyRegistration;
+
 
 class RegisteredUserController extends Controller
 {
@@ -71,10 +73,15 @@ class RegisteredUserController extends Controller
             'status' => 0
         ]);
 
-        event(new Registered($user));
+        // event(new Registered($user));
+
+        // Email Notification
+        $user->notify(new VerifyRegistration($user));
+
+        session()->flash('success', 'A confirmation email has sent to your email. please check your and confirm');
 
         Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('/');
+        // return redirect(RouteServiceProvider::HOME);
     }
 }

@@ -14,6 +14,9 @@
     {{-- header start  --}}
     @include('Frontend.partials.header')
     {{-- header end  --}}
+    {{-- show error message start  --}}
+    @include('Frontend.partials.message')
+    {{-- show error message end  --}}
     {{-- main content start  --}}
     @yield('content')
     {{-- main content end  --}}

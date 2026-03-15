@@ -12,8 +12,7 @@ use App\Http\Controllers\Backend\DivisionsController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\PagesController;
 use App\Http\Controllers\Frontend\ProductController;
-
-
+use App\Http\Controllers\Frontend\VerificationController;
 
 // Frontend 
 
@@ -94,10 +93,10 @@ Route::group(['prefix' => 'admin'], function(){
 
 });
 
+// User Route Custom 
+Route::get('/token/{token}', [VerificationController::class, 'verify'])->name('user.verification');
 
-
-// User Authentication 
-
+// User Authentication built in
 Route::get('/welcome', function () {
     return view('welcome');
 });

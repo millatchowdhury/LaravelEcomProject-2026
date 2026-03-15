@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\User;
+use App\Notifications\VerifyRegistration;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,13 +27,37 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
+    // public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
-        $request->session()->regenerate();
+        $user = User::where('email', $request->email)->first();
+        if($user->status == 1){
+            if(Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)){
+                return redirect()->intended(route('index'));
+            }else{
+                session()->flash('sticky_error', 'Invalid Login');
+                return back();
+            }
+        }else{
+            if(!is_null($user)){
+                $user->notify(new VerifyRegistration($user));
+                session()->flash('success', 'A New confirmation email has sent to you.. Please check and confirm your email');
+                return redirect('/');
+            }else{
+                session()->flash('sticky_error', 'Please login first !!');
+                return redirect()->route('login');
+            }
+        }
+        // $request->authenticate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        // $request->session()->regenerate();
+
+        // return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**
