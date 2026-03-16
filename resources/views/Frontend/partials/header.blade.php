@@ -28,8 +28,8 @@
                                         <div class="p-6">
                                             @auth
                                             {{-- ---------------- --}}
-                                            
-                {{ Auth::user()->first_name }}  |  
+                <img src="{{ App\Helpers\ImageHelper::getUserImage(Auth::user()->id) }}" style="border-radius:50px;width:50px; border-radious:50px;" alt="">
+                {{ Auth::user()->first_name }}  |  {{ Auth::user()->last_name }}
                 {{ Auth::user()->email }}
                 <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
