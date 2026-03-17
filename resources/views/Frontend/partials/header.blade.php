@@ -19,6 +19,7 @@
                                     </li>
                                 
                                 </ul>
+                                {{-- ----------- --}}
                                 <form class="d-flex" action="{{ route('search') }}" method="GET">
                                     <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search"/>
                                     <button class="btn btn-outline-success" type="submit">Search</button>
@@ -28,30 +29,30 @@
                                         <div class="p-6">
                                             @auth
                                             {{-- ---------------- --}}
-                <img src="{{ App\Helpers\ImageHelper::getUserImage(Auth::user()->id) }}" style="border-radius:50px;width:50px; border-radious:50px;" alt="">
-                {{ Auth::user()->first_name }}  |  {{ Auth::user()->last_name }}
-                {{ Auth::user()->email }}
-                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
+                                            <img src="{{ App\Helpers\ImageHelper::getUserImage(Auth::user()->id) }}" style="border-radius:50px;width:50px; border-radious:50px;" alt="">
+                                            {{ Auth::user()->first_name }}   {{-- {{ Auth::user()->last_name }} --}}
+                                            {{-- {{ Auth::user()->email }} --}}
+                                            {{-- <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                                            {{ __('Dashboard') }}
+                                        </x-responsive-nav-link> --}}
+                                            {{-- <x-responsive-nav-link :href="route('profile.edit')">
+                                                {{ __('Profile') }}
+                                        </x-responsive-nav-link> --}}
 
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
+                                            <!-- Authentication -->
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
+                                                <x-responsive-nav-link :href="route('logout')"
+                                                        onclick="event.preventDefault();
+                                                                    this.closest('form').submit();">
+                                                    {{ __('Log Out') }}
+                                                </x-responsive-nav-link>
+                                            </form>
     
 
                                             {{-- ---------------- --}}
-                                                <a href="{{ url('/dashboard') }}"  style="display: inline-block; padding:5px 15px; background:tomato;font-weight:bold;color:#fff;text-decoration:none;">Dashboard</a>
+                                                <a href="{{ route('show.user.dashboard') }}"  style="display: inline-block; padding:5px 15px; background:tomato;font-weight:bold;color:#fff;text-decoration:none;">Dashboard</a>
                                             @else
                                                 <a href="{{ route('login') }}" style="display: inline-block; padding:5px 15px;text-decoration:none; background:tomato;font-weight:bold;color:#fff;">Log in</a>
 
@@ -62,6 +63,7 @@
                                         </div>
                                     @endif
                                 </div>
+                                {{-- ----------- --}}
                             </div>
                             
                         </div>

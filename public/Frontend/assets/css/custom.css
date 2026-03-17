@@ -38,3 +38,7 @@
     -o-border-radius: 0px !important;
 }
 
+.login-register {
+    position: absolute;
+    right: 0;
+}

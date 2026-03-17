@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\DivisionsController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\PagesController;
 use App\Http\Controllers\Frontend\ProductController;
+use App\Http\Controllers\Frontend\UsersController;
 use App\Http\Controllers\Frontend\VerificationController;
 
 // Frontend 
@@ -93,8 +94,15 @@ Route::group(['prefix' => 'admin'], function(){
 
 });
 
-// User Route Custom 
-Route::get('/token/{token}', [VerificationController::class, 'verify'])->name('user.verification');
+// User Custom Route
+Route::group(['prefix' => 'user'], function(){
+    Route::get('/token/{token}', [VerificationController::class, 'verify'])->name('user.verification'); // user registration verification
+    Route::get('/dashboard', [UsersController::class, 'dashboard'])->name('show.user.dashboard'); // show dashboard
+    Route::get('/profile', [UsersController::class, 'editProfile'])->name('edit.user.profile'); // edit profile page show
+    Route::post('/profile/update', [UsersController::class, 'profileUpdate'])->name('user.profile.update');
+});
+
+
 
 // User Authentication built in
 Route::get('/welcome', function () {
