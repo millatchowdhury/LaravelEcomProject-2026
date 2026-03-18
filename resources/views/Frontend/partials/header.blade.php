@@ -1,7 +1,10 @@
+
+
 <div class="header-area" style="background:#F8F9FA;">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
+                    @include('Frontend.partials.message')
                     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 50px;">
                         <div class="container-fluid">
                             <a class="navbar-brand" href="{{ route('index') }}">E-COM</a>
@@ -49,7 +52,7 @@
                                                     {{ __('Log Out') }}
                                                 </x-responsive-nav-link>
                                             </form>
-    
+                        
 
                                             {{-- ---------------- --}}
                                                 <a href="{{ route('show.user.dashboard') }}"  style="display: inline-block; padding:5px 15px; background:tomato;font-weight:bold;color:#fff;text-decoration:none;">Dashboard</a>
@@ -64,6 +67,20 @@
                                     @endif
                                 </div>
                                 {{-- ----------- --}}
+                                <ul class="navbar-nav ml-auto">
+                            <li>
+                                <a class="nav-link btn-cart-nav" href="{{ route('carts') }}">
+
+                                    <button class="btn btn-danger">
+                                    <span class="mt-1">Cart</span>
+                                    <span class="badge badge-warning" id="totalItems">
+                                       {{ App\Models\Cart::totalItems() }}
+                                    </span>
+                                    </button>
+
+                                </a>
+                            </li>
+                        </ul>
                             </div>
                             
                         </div>

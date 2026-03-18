@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\AdminPagesController;
 use App\Http\Controllers\Backend\AdminProductController;
 use App\Http\Controllers\Backend\DistrictsController;
 use App\Http\Controllers\Backend\DivisionsController;
+use App\Http\Controllers\Frontend\CartsController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\PagesController;
 use App\Http\Controllers\Frontend\ProductController;
@@ -102,6 +103,11 @@ Route::group(['prefix' => 'user'], function(){
     Route::post('/profile/update', [UsersController::class, 'profileUpdate'])->name('user.profile.update');
 });
 
+// Cart Routes frontend 
+Route::group(['prefix' => 'carts'], function(){
+    Route::get('/', [CartsController::class, 'index'])->name('carts');
+    Route::post('/store', [CartsController::class, 'store'])->name('carts.store');
+});
 
 
 // User Authentication built in
