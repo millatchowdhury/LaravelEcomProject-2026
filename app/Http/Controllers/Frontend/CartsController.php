@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class CartsController extends Controller
 {
+    public function index(){
+      return view('Frontend.pages.carts');
+    }
+
     public function store(Request $request){
        $this->validate($request, [
       'product_id' => 'required'
@@ -83,4 +87,27 @@ class CartsController extends Controller
 //     session()->flash('success', 'Product has added to cart !!');
 //     return back();
 //   }
+
+  public function update($id, Request $request){
+    $cart = Cart::find($id);
+    if(!is_null($cart)){
+      $cart->product_quantity = $request->product_quantity;
+      $cart->save();
+    }else{
+      return redirect()->route('carts');
+    }
+    session()->flush('success', 'Cart item has updated successfully !!..');
+    return back();
+  }
+
+  public function destroy($id){
+    $cart = Cart::find($id);
+    if(!is_null($cart)){
+      $cart->delete();
+    }else{
+      return redirect()->route('carts');
+    }
+    session()->flush('success', 'Cart item has deleted !!..');
+    return back();
+  }
 }

@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\DistrictsController;
 use App\Http\Controllers\Backend\DivisionsController;
 use App\Http\Controllers\Frontend\CartsController;
 use App\Http\Controllers\Frontend\CategoryController;
+use App\Http\Controllers\Frontend\CheckoutsController;
 use App\Http\Controllers\Frontend\PagesController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\UsersController;
@@ -34,7 +35,19 @@ Route::group(['prefix' => 'products'], function(){
 });
 
 
+// Cart Routes frontend 
+Route::group(['prefix' => 'carts'], function(){
+    Route::get('/', [CartsController::class, 'index'])->name('carts');
+    Route::post('/store', [CartsController::class, 'store'])->name('carts.store');
+    Route::post('/update/{id}', [CartsController::class, 'update'])->name('carts.update');
+    Route::post('/delete/{id}', [CartsController::class, 'destroy'])->name('carts.delete');
+});
 
+// Checkout Routes frontend
+Route::group(['prefix' => 'checkout'], function(){
+    Route::get('/', [CheckoutsController::class, 'index'] )->name('checkouts');
+    Route::post('/store', [CheckoutsController::class, 'store'] )->name('checkouts.store');
+});
 
 
 
@@ -103,11 +116,7 @@ Route::group(['prefix' => 'user'], function(){
     Route::post('/profile/update', [UsersController::class, 'profileUpdate'])->name('user.profile.update');
 });
 
-// Cart Routes frontend 
-Route::group(['prefix' => 'carts'], function(){
-    Route::get('/', [CartsController::class, 'index'])->name('carts');
-    Route::post('/store', [CartsController::class, 'store'])->name('carts.store');
-});
+
 
 
 // User Authentication built in
